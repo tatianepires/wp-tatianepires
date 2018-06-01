@@ -1,0 +1,25 @@
+/* Rows and Columns */
+.tps_row { margin-bottom: 8px; }
+.tps_row:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+/* Rows and Columns */
+.tps_col {
+  float: left;
+  box-sizing: border-box;
+  padding: 8px;
+}
+.tps_col:first-child { padding-left: 0; }
+.tps_col:last-child { padding-right: 0; }
+.tps_col_100 { width: 100%; }
+.tps_col_80 { width: 80%; }
+.tps_col_75 { width: 75%; }
+.tps_col_60 { width: 60%; }
+.tps_col_66 { width: 66.666%; }
+.tps_col_50 { width: 50%; }
+.tps_col_40 { width: 40%; }
+.tps_col_33 { width: 33.333%; }
+.tps_col_25 { width: 25%; }
+.tps_col_20 { width: 20%; }
