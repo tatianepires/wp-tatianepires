@@ -217,3 +217,35 @@ function tps_entry_date() {
     '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
   );
 }
+
+function tps_pagination($query) {
+  $big = 999999999; // need an unlikely integer
+  $pagination_html = '';
+
+  if( $query->max_num_pages > 1 ) {
+    $pages = paginate_links(
+      array(
+        'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+        'format' => '?paged=%#%',
+        'current' => max( 1, get_query_var('paged') ),
+        'total' => $query->max_num_pages,
+        'prev_text'          => twentyseventeen_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
+        'next_text'          => '<span class="screen-reader-text">' . __( 'Next page', 'twentyseventeen' ) . '</span>' . twentyseventeen_get_svg( array( 'icon' => 'arrow-right' ) ),
+        'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyseventeen' ) . ' </span>',
+      )
+    );
+
+    ob_start();
+    ?>
+    <nav class="navigation pagination" role="navigation">
+      <h2 class="screen-reader-text">Navegação por posts</h2>
+      <div class="nav-links">
+        <?php echo $pages; ?>
+      </div>
+    </nav>
+    <?php
+    $pagination_html = ob_get_clean();
+  }
+
+  return $pagination_html;
+}
