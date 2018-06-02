@@ -60,7 +60,8 @@ body.home .navigation-top .current_page_item > a { color: #222; }
   text-transform: initial !important;
 }
 .single-post .entry-title,
-.page .entry-title { font-size: 2.6rem !important; }
+.page .entry-title,
+.post-type-archive-post_en .entry-title { font-size: 2.6rem !important; }
 .entry-title a:hover {
   text-decoration: none !important;
 }
@@ -124,10 +125,13 @@ body.home .navigation-top .current_page_item > a { color: #222; }
   max-width: 1000px;
 }
 .page.page-one-column .entry-header { margin-bottom: 0; }
-.single.has-sidebar #primary {
+.single.has-sidebar #primary,
+.post-type-archive-post_en #primary {
   float: none !important;
   width: 100% !important;
 }
+.page-blog .navigation.pagination,
+.post-type-archive-post_en .navigation.pagination { width: 100%; }
 .twentyseventeen-panel { border: none !important; }
 .twentyseventeen-panel:nth-child(2n) { background-color: #fbfbfb; }
 .single .entry-meta .byline { display: none; }
