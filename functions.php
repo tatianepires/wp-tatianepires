@@ -17,6 +17,7 @@ require_once get_stylesheet_directory() . '/inc/frontend-scripts.php';
 // Theme
 // =============================================================================
 
+require_once get_stylesheet_directory() . '/inc/tps/body-classes.php';
 require_once get_stylesheet_directory() . '/inc/tps/builder-block-shortcodes.php';
 require_once get_stylesheet_directory() . '/inc/tps/builder-element-shortcodes.php';
 require_once get_stylesheet_directory() . '/inc/tps/builder-module-functions.php';
