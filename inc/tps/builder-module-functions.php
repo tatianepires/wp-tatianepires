@@ -189,7 +189,12 @@ function tps_module_no_posts() {
  */
 
 function tps_excerpt($post_id) {
-  $read_more = sprintf('<br><a href="%s">Continue lendo &raquo;</a>', get_the_permalink($post_id));
+  $post_type = get_post_type($post_id);
+
+  if( $post_type == 'post_en' ) $continue_reading = 'Continue reading';
+  else $continue_reading = 'Continue lendo';
+  
+  $read_more = sprintf('<br><a href="%s">%s &raquo;</a>', get_the_permalink($post_id), $continue_reading);
   $excerpt = get_the_excerpt($post_id) . $read_more;
   
   return $excerpt;
