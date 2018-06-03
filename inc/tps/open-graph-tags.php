@@ -54,7 +54,7 @@ function tps_open_graph_tags() {
 
     if( has_post_thumbnail($post->ID) ) {
       $thumb_id = get_post_thumbnail_id($post->ID);
-      $post_img = wp_get_attachment_image_src($thumb_id, 'large');
+      $post_img = wp_get_attachment_image_src($thumb_id, 'medium');
     }
     else {
       $post_img = array($blog_img, $blog_img_w, $blog_img_h);
