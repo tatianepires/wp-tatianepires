@@ -52,8 +52,13 @@ function tps_open_graph_tags() {
     $post_url = get_permalink($post->ID);
     $post_excerpt = get_the_excerpt($post->ID);
 
-    if( has_post_thumbnail($post->ID) ) $post_img = wp_get_attachment_image_src($post->ID, 'large');
-    else $post_img = array($blog_img, $blog_img_w, $blog_img_h);
+    if( has_post_thumbnail($post->ID) ) {
+      $thumb_id = get_post_thumbnail_id($post->ID);
+      $post_img = wp_get_attachment_image_src($thumb_id, 'large');
+    }
+    else {
+      $post_img = array($blog_img, $blog_img_w, $blog_img_h);
+    }
     
     echo '<!-- Open Graph tags -->';
     echo '<meta property="og:type" content="article" />';
