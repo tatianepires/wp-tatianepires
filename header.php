@@ -47,13 +47,9 @@
 	 * Using get_queried_object_id() here since the $post global may not be set before a call to the_post().
 	 */
 	if ( is_single() && has_post_thumbnail( get_queried_object_id() ) ) {
-    $thumb_id = get_post_thumbnail_id(get_queried_object_id()); 
-
-  	$img_src = wp_get_attachment_image_src($thumb_id, 'full');
-
-		echo '<div class="featured-parallax-container">';
-		printf('<div class="featured-parallax" style="background-image:url(%s)"></div>', $img_src[0]);
-		echo '</div><!-- .featured-parallax-container -->';
+    echo '<div class="single-featured-image-header">';
+		echo get_the_post_thumbnail( get_queried_object_id(), 'twentyseventeen-featured-image' );
+		echo '</div><!-- .single-featured-image-header -->';
 	}
 	?>
 

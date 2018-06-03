@@ -73,21 +73,6 @@ body.home .navigation-top .current_page_item > a { color: #222; }
   font-weight: normal;
 }
 
-/* Single featured image parallax */
-.single .featured-parallax-container {
-  background-color: #fbfbfb;
-  border-bottom: 1px solid #eee;
-}
-.single .featured-parallax {
-  max-width: 1200px;
-  height: 400px;
-  margin: 0 auto;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 /* Rows and Columns */
 .tps_row { margin-bottom: 8px; }
 .tps_row:after {
@@ -202,12 +187,9 @@ body.home .navigation-top .current_page_item > a { color: #222; }
 
 @media screen and (min-width: 48em) {
   .site-content { padding-top: 2.5rem; }
-  .single .featured-parallax { height: 500px; }
 }
 
-@media screen and ( min-width: 79em ) {
-  .single .featured-parallax { height: 550px; }
-}
+/*@media screen and ( min-width: 79em ) {}*/
 
 /* Notes on posts */
 body.single article .tps-alert,
