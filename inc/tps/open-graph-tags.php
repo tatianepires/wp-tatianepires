@@ -23,6 +23,7 @@ function tps_open_graph_tags() {
   $blog_img_h = 300;
   
   echo '<meta property="og:locale" content="pt_BR" />';
+  echo '<meta property="fb:app_id" content="638145059723806">';
 
   if( is_front_page() || is_home() || is_page() ) {
     if( is_page(array('blog')) ) $blog_desc = 'Todos os posts do blog.';
