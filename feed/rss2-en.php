@@ -73,7 +73,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 	?></sy:updateFrequency>
 	<?php	
 	$rss_args = array(
-		'post_type' => array('post'),
+		'post_type' => array('post_en'),
 		'post_status' => 'publish',
 		'posts_per_page' => get_option('posts_per_rss'),
 		'orderby' => 'date',

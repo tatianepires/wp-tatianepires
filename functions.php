@@ -28,8 +28,7 @@ require_once get_stylesheet_directory() . '/inc/tps/login-customize.php';
 require_once get_stylesheet_directory() . '/inc/tps/menu-homepage.php';
 require_once get_stylesheet_directory() . '/inc/tps/open-graph-tags.php';
 require_once get_stylesheet_directory() . '/inc/tps/rss-functions.php';
-require_once get_stylesheet_directory() . '/inc/tps/rss-mailchimp.php';
-require_once get_stylesheet_directory() . '/inc/tps/rss-template.php';
+require_once get_stylesheet_directory() . '/inc/tps/rss-templates.php';
 require_once get_stylesheet_directory() . '/inc/tps/tagcloud-shortcode.php';
 
 // WordPress
