@@ -1,6 +1,7 @@
 <?php
 add_shortcode( 'tps_title', 'tps_title_shortcode' );
 add_shortcode( 'tps_button', 'tps_button_shortcode' );
+add_shortcode( 'tps_buttons', 'tps_buttons_shortcode' );
 add_shortcode( 'tps_quote', 'tps_quote_shortcode' );
 
 $css = array(
@@ -58,10 +59,73 @@ function tps_button_shortcode( $atts, $content = null ) {
   if( is_null($button['color']) ) $button['color'] = '#fff';
 
   $button_code = sprintf('<div style="text-align:%s;"><a href="%s" %s style="display:inline-block; background-color:%s; color:%s; border-radius:5px; padding:8px 16px;">%s%s</a></div>',
-    $button['text-align'], $button['url'], $button['class'], $button['background-color'], $button['color'], $button['icon'], $content
+    $button['text-align'],
+    $button['url'],
+    $button['class'],
+    $button['background-color'],
+    $button['color'],
+    $button['icon'],
+    $content
   );
 
   return $button_code;
+}
+
+function tps_buttons_shortcode( $atts ) {
+  global $css;
+
+  $buttons = shortcode_atts( array(
+    'urls' => null,
+    'texts' => null,
+    'icons' => null, // font awesome icon fa-NAME
+    'titles' => null,
+    'text-align' => 'left',
+    'background-color' => null,
+    'color' => null,
+    'class' => null,
+  ), $atts );
+
+  if( is_null($buttons['urls']) || is_null($buttons['texts']) ) return;
+
+  $buttons['urls'] = explode(';', $buttons['urls']);
+  $buttons['texts'] = explode(';', $buttons['texts']);
+  $buttons['icons'] = explode(';', $buttons['icons']);
+  $buttons['titles'] = explode(';', $buttons['titles']);
+
+  if( is_null($buttons['class']) ) $buttons['class'] = '';
+  else $buttons['class'] = sprintf('class="%s"', $buttons['class']);
+
+  if( is_null($buttons['background-color']) ) $buttons['background-color'] = $css['main-color'];
+  if( is_null($buttons['color']) ) $buttons['color'] = '#fff';
+
+  ob_start();
+
+  printf('<div style="text-align:%s;">', $buttons['text-align']);
+  foreach ($buttons['urls'] as $i => $url) {
+    $text = '';
+    if( isset($buttons['texts'][$i]) ) $text = $buttons['texts'][$i];
+
+    $icon = '';
+    if( isset($buttons['icons'][$i]) && $buttons['icons'][$i] != '0'  ) $icon = sprintf('<i class="fa fa-%s"></i> ', $buttons['icons'][$i]);
+
+    $title = '';
+    if( isset($buttons['titles'][$i]) && $buttons['titles'][$i] != '0'  ) $title = sprintf('title="%s"', $buttons['titles'][$i]);
+
+    printf('<a href="%s" %s %s style="display:inline-block; background-color:%s; color:%s; border-radius:5px; margin:0 8px; padding:8px 16px;">%s%s</a>',
+      $url,
+      $title,
+      $buttons['class'],
+      $buttons['background-color'],
+      $buttons['color'],
+      $icon,
+      $text
+    );
+  }
+  echo '</div>';
+
+  $buttons_code = ob_get_clean();
+
+  return $buttons_code;
 }
 
 /*
