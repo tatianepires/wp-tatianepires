@@ -55,7 +55,7 @@ echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>';
 	?></sy:updateFrequency>
 	<?php
 	$rss_args = array(
-		'post_type' => array('post', 'post_en'),
+		'post_type' => array('post'),
 		'post_status' => 'publish',
 		'posts_per_page' => 1,
 		'orderby' => 'date',
