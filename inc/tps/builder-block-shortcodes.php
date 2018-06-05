@@ -141,6 +141,7 @@ function tps_block_3_shortcode( $atts ) {
   if ( $posts->have_posts() ) {
     $posts_html[] = '<div class="tps-block tps-block-3">';
 
+    $count = 0;
     while ( $posts->have_posts() ) {
       $posts->the_post();
 
@@ -157,6 +158,13 @@ function tps_block_3_shortcode( $atts ) {
       $article_tag_classes = implode(' ', $article_tag_classes);
       
       $posts_html[] = tps_module_3($post_id, $article_tag_classes);
+
+      $count++;
+
+      if( $count == 2 ) {
+        $posts_html[] = '<div class="tps-float-breaker"></div>';
+        $count = 0;
+      }
     }
     $posts_html[] = '</div><!-- .tps-block-3 -->';
   }
@@ -230,7 +238,6 @@ function tps_blog_page_shortcode() {
   global $post_query_args;
 
   if ( get_query_var('paged') ) { $post_query_args['paged'] = get_query_var( 'paged' ); }
-  else { $post_query_args['posts_per_page']++; }
 
   $posts = new WP_Query( $post_query_args );
 
@@ -255,18 +262,21 @@ function tps_blog_page_shortcode() {
       }
       $article_tag_classes = implode(' ', $article_tag_classes);
 
-      if( $posts->get('paged') == 0 && $posts->current_post == 0 ) {
-        $posts_html[] = tps_module_1($post_id, $article_tag_classes);
+      if( $posts->get('paged') == 0 && $posts->current_post < 5 ) {
+        if( $posts->current_post == 0 ) $posts_html[] = tps_module_1($post_id, $article_tag_classes);
+        else{ 
+          $count++;
+
+          $posts_html[] = tps_module_3($post_id, $article_tag_classes);
+
+          if( $count == 2 ) {
+            $posts_html[] = '<div class="tps-float-breaker"></div>';
+            $count = 0;
+          }
+        }
       }
       else {
-        $count++;
-        
-        $posts_html[] = tps_module_3($post_id, $article_tag_classes);
-        
-        if( $count == 2 ) {
-          $posts_html[] = '<div class="tps-float-breaker"></div>';
-          $count = 0;
-        }
+        $posts_html[] = tps_module_2($post_id, $article_tag_classes);
       }
     }
 
