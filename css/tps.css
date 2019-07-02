@@ -195,6 +195,7 @@ body.home .navigation-top .current_page_item > a { color: #222; }
 body.single article .tps-alert,
 body.single article .tps-download,
 body.single article .tps-info,
+body.single article .tps-music,
 body.single article .tps-note,
 body.single article .tps-warning,
 body.single article .tps-editorial {
