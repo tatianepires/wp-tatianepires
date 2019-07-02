@@ -209,6 +209,7 @@ body.single article .tps-editorial {
 body.single article .tps-alert:before,
 body.single article .tps-download:before,
 body.single article .tps-info:before,
+body.single article .tps-music:before,
 body.single article .tps-note:before,
 body.single article .tps-warning:before,
 body.single article .tps-editorial:before {
@@ -239,13 +240,16 @@ body.single article .tps-download a {
   color: #3C4F00;
 }
 
-body.single article .tps-info {
+body.single article .tps-info,
+body.single article .tps-music {
   color: #00426F;
   background-color: #BFE5FF;
   border-color: #4AB7FF;
 }
 body.single article .tps-info:before { content: "\f129"; }
-body.single article .tps-info a { color: #00426F; }
+body.single article .tps-music:before { content: "\f001"; }
+body.single article .tps-info a,
+body.single article .tps-music a { color: #00426F; }
 
 body.single article .tps-note {
   color: #6F5900;
